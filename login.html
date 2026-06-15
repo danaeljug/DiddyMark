@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diddymark | Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="login">
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <main class="app home-app">
+      <section class="hero">
+        <p class="eyebrow">diddymark Account</p>
+        <h1>Login</h1>
+        <p class="hero-copy">Log in to continue to your study dashboard.</p>
+      </section>
+
+      <section class="panel home-grid">
+        <article class="selector-card">
+          <form id="loginForm" class="home-form">
+            <label>
+              Email
+              <input id="loginEmail" type="email" required placeholder="you@example.com" />
+            </label>
+            <label>
+              Password
+              <input id="loginPassword" type="password" required placeholder="Your password" />
+            </label>
+            <button type="submit" class="primary">Log In</button>
+          </form>
+          <p id="loginStatus" class="meta">Enter your account details.</p>
+        </article>
+
+        <article class="selector-card">
+          <h2>New here?</h2>
+          <p class="meta">Create an account first.</p>
+          <div class="home-actions">
+            <a class="mode-link" href="signup.html">Open Sign Up</a>
+            <a class="mode-link" href="index.html">Back to Home</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="auth.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "name": "diddymark-desktop",
+  "productName": "diddymark",
+  "version": "1.0.0",
+  "description": "Desktop app wrapper for the diddymark NSW HSC science study tool.",
+  "main": "electron/main.js",
+  "type": "commonjs",
+  "scripts": {
+    "app": "electron .",
+    "dev": "electron .",
+    "dist": "electron-builder --mac --dir",
+    "dist:mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.diddymark.desktop",
+    "productName": "diddymark",
+    "files": [
+      "electron/**/*",
+      "*.html",
+      "*.js",
+      "*.css",
+      "paper_stimuli/**/*",
+      "README.md"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "mac": {
+      "category": "public.app-category.education"
+    }
+  },
+  "devDependencies": {
+    "electron": "^32.0.1",
+    "electron-builder": "^24.13.3"
+  }
+}

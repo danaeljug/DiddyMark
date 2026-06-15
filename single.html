@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diddymark | Single</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="single">
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <main class="app">
+      <section class="hero">
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a class="active" href="single.html">Single</a>
+          <a href="test.html">Test</a>
+          <a href="history.html">History</a>
+        </nav>
+        <p class="eyebrow">NSW HSC Year 12</p>
+        <h1>diddymark</h1>
+        <p class="hero-copy">
+          Single Question Practice. Generate one syllabus-based question, answer
+          it, and get HSC-style marking, sample answer, and feedback.
+        </p>
+        <div class="session-row">
+          <p id="sessionDisplay" class="meta">Not logged in.</p>
+          <button id="logoutBtn" class="ghost" type="button">Log Out</button>
+        </div>
+      </section>
+
+      <section class="panel controls" aria-label="Question controls">
+        <div class="field-row">
+          <label>
+            Student Name
+            <input id="studentNameInput" type="text" placeholder="e.g. Priya Patel" />
+          </label>
+          <label>
+            Subject
+            <select id="subjectSelect"></select>
+          </label>
+          <label>
+            Module
+            <select id="moduleSelect"></select>
+          </label>
+          <label>
+            Level
+            <select id="levelSelect">
+              <option value="easy">Easy (Band 4)</option>
+              <option value="medium">Medium (Band 5-6)</option>
+              <option value="hard">Hard (State Rank)</option>
+            </select>
+          </label>
+          <label>
+            Question Source
+            <select id="questionSourceSelect">
+              <option value="syllabus">Syllabus Question Bank</option>
+              <option value="past_style">Past HSC/Trial Style</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="selection-grid">
+          <div class="selector-card">
+            <div class="selector-head">
+              <h3>Question Type Focus</h3>
+              <p class="meta">Select one or more styles.</p>
+            </div>
+            <div id="questionTypeList" class="checklist-grid"></div>
+          </div>
+          <div class="selector-card">
+            <div class="selector-head">
+              <h3>Module Topics</h3>
+              <p id="questionTopicHelp" class="meta">Up to four topics can be selected.</p>
+            </div>
+            <div id="questionTopicList" class="topic-list"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="loadProgressBtn" class="secondary">Load Progress</button>
+          <button id="generateQuestionBtn" class="primary">Generate Question</button>
+        </div>
+        <p id="progressSummary" class="meta">Enter a student name to track saved progress.</p>
+        <p class="meta">
+          Past-style mode references:
+          <a href="https://thsconline.github.io/s/yr12/Physics/trialpapers.html" target="_blank" rel="noopener">Physics Trials</a>
+          |
+          <a href="https://thsconline.github.io/s/yr12/Chemistry/trialpapers.html" target="_blank" rel="noopener">Chemistry Trials</a>
+          |
+          <a href="https://thsconline.github.io/s/yr12/Biology/trialpapers.html" target="_blank" rel="noopener">Biology Trials</a>
+        </p>
+      </section>
+
+      <section class="panel test-panel page-hidden" aria-label="Timed test controls">
+        <h2>Timed Test Mode</h2>
+        <div class="field-row">
+          <label>
+            Number of Questions (Auto)
+            <input id="testQuestionCount" type="number" min="2" max="120" value="5" />
+          </label>
+          <label>
+            Time (minutes)
+            <input id="testDurationMinutes" type="number" min="5" max="180" value="180" />
+          </label>
+          <label>
+            MCQ Count (Auto)
+            <input id="testMcqCount" type="number" min="0" max="120" value="20" />
+          </label>
+          <label>
+            Subject Mix
+            <select id="testScopeSelect">
+              <option value="subject">Current Subject</option>
+              <option value="pair_pc">Physics + Chemistry</option>
+              <option value="pair_pb">Physics + Biology</option>
+              <option value="pair_cb">Chemistry + Biology</option>
+              <option value="all">All Three Subjects</option>
+            </select>
+          </label>
+          <label>
+            Topic Subject
+            <select id="testTopicSubjectSelect">
+              <option value="physics">Physics</option>
+              <option value="chemistry">Chemistry</option>
+              <option value="biology">Biology</option>
+            </select>
+          </label>
+          <label>
+            Topic Module
+            <select id="testTopicModuleSelect">
+              <option value="m5">Module 5</option>
+              <option value="m6">Module 6</option>
+              <option value="m7">Module 7</option>
+              <option value="m8">Module 8</option>
+            </select>
+          </label>
+        </div>
+        <div class="selection-grid">
+          <div class="selector-card">
+            <div class="selector-head">
+              <h3>Test Modules</h3>
+              <p id="testModuleHelp" class="meta">Select one or more.</p>
+            </div>
+            <div id="testModuleList" class="checklist-grid"></div>
+          </div>
+          <div class="selector-card">
+            <div class="selector-head">
+              <h3>Test Question Types</h3>
+              <p class="meta">Filter the style of questions in the test.</p>
+            </div>
+            <div id="testTypeList" class="checklist-grid"></div>
+          </div>
+          <div class="selector-card">
+            <div class="selector-head">
+              <h3>Test Topics</h3>
+              <p id="testTopicHelp" class="meta">Up to six topics can be selected.</p>
+            </div>
+            <div id="testTopicList" class="topic-list"></div>
+          </div>
+        </div>
+        <div class="actions">
+          <button id="startTestBtn" class="secondary">Start Timed Test</button>
+          <button id="generateHomeworkSetBtn" class="secondary">Generate Homework Set PDF</button>
+          <button id="openHomeworkAnswerSheetBtn" class="ghost" disabled>Open Answer Sheet PDF</button>
+          <button id="nextTestBtn" class="primary hidden">Next Question</button>
+          <button id="finishTestBtn" class="ghost hidden">Finish Test</button>
+        </div>
+        <p id="testStatus" class="meta">No active test.</p>
+      </section>
+
+      <section class="panel question-panel" aria-label="Generated question">
+        <div class="question-header">
+          <h2>Generated Question</h2>
+          <p id="questionMeta" class="meta"></p>
+        </div>
+        <p id="questionText" class="question-placeholder">
+          Pick your subject and level, then generate a question.
+        </p>
+        <div id="mcqPanel" class="mcq-panel hidden">
+          <p class="meta">Multiple Choice: choose one option</p>
+          <div id="mcqOptionsList" class="mcq-options"></div>
+        </div>
+        <div id="stimulusPanel" class="stimulus-panel hidden">
+          <img id="stimulusImage" class="stimulus-image" alt="Question stimulus" />
+          <p id="stimulusCaption" class="meta"></p>
+          <a id="stimulusLink" class="meta" href="#" target="_blank" rel="noopener">Open source</a>
+        </div>
+      </section>
+
+      <section class="panel response-panel" aria-label="Student response">
+        <h2>Your Response</h2>
+        <textarea
+          id="studentResponse"
+          rows="12"
+          placeholder="Type your HSC-style extended response here..."
+        ></textarea>
+        <div class="response-tools">
+          <article class="tool-card">
+            <h3>Working Whiteboard</h3>
+            <p class="meta">Use this for equations/working. It is saved visually, not auto-read for marking.</p>
+            <div class="whiteboard-controls">
+              <label>
+                Pen Colour
+                <input id="whiteboardColor" type="color" value="#14213d" />
+              </label>
+              <label>
+                Pen Size
+                <input id="whiteboardSize" type="range" min="1" max="16" value="3" />
+              </label>
+              <button id="clearWhiteboardBtn" class="ghost" type="button">Clear Board</button>
+              <button id="fullscreenWhiteboardBtn" class="secondary" type="button">Fullscreen Board</button>
+            </div>
+            <canvas id="whiteboardCanvas" width="960" height="280"></canvas>
+          </article>
+
+          <article class="tool-card">
+            <h3>Photo Upload Response</h3>
+            <p class="meta">Upload a handwritten response photo, then add transcription for marking.</p>
+            <input id="responsePhotoInput" type="file" accept="image/*" />
+            <img id="responsePhotoPreview" class="upload-preview hidden" alt="Uploaded response preview" />
+            <label>
+              Transcription From Photo (used for marking)
+              <textarea
+                id="photoTranscriptionInput"
+                rows="5"
+                placeholder="Paste/type your response text from the uploaded photo so marking can run..."
+              ></textarea>
+            </label>
+          </article>
+        </div>
+        <div class="actions">
+          <button id="markResponseBtn" class="primary">Mark My Response</button>
+          <button id="openPdfReportBtn" class="secondary" disabled>Open PDF Report</button>
+          <button id="clearBtn" class="ghost">Clear</button>
+        </div>
+      </section>
+
+      <section class="panel results-grid">
+        <article class="result-card">
+          <h3>Marking Result</h3>
+          <div id="markOutput" class="result-content muted">
+            Marking appears here after you submit a response.
+          </div>
+        </article>
+
+        <article class="result-card">
+          <h3>Highlighted Feedback</h3>
+          <p class="legend">
+            <span class="legend-good">Good phrase</span>
+            <span class="legend-term">Scientific term</span>
+            <span class="legend-insert">Suggested insert</span>
+          </p>
+          <div id="annotatedOutput" class="result-content muted">
+            We will highlight your response after it is marked.
+          </div>
+        </article>
+
+        <article class="result-card">
+          <h3>State-Rank Sample Answer</h3>
+          <div id="sampleOutput" class="result-content muted">
+            A sample answer will appear here after your response is marked.
+          </div>
+        </article>
+      </section>
+
+      <section class="panel progress-panel">
+        <h2>Saved Attempts</h2>
+        <div id="attemptHistory" class="result-content muted">
+          Saved attempts for the selected student will appear here.
+        </div>
+      </section>
+
+      <footer class="note">
+        <p>
+          This tool is a study aid. Final school marks should always use your
+          teacher's assessment criteria and NESA marking guidelines.
+        </p>
+      </footer>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="trial_bank.js"></script>
+    <script src="paper_stimuli.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

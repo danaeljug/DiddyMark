@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diddymark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <main class="app home-app">
+      <section class="hero">
+        <p class="eyebrow">NSW HSC Year 12</p>
+        <h1>diddymark</h1>
+        <p class="hero-copy">
+          Dashboard for syllabus-linked HSC Science prep. Choose single-question
+          practice or timed test mode.
+        </p>
+        <div class="session-row">
+          <p id="sessionDisplay" class="meta">Checking session...</p>
+          <button id="logoutBtn" class="ghost" type="button">Log Out</button>
+        </div>
+      </section>
+
+      <section class="panel home-grid">
+        <article class="selector-card">
+          <div class="selector-head">
+            <h2>Practice Mode</h2>
+          </div>
+          <p class="meta">Generate one question, type your response, then mark it.</p>
+          <div class="home-actions">
+            <a id="openSingleLink" class="mode-link" href="single.html">Open Single Question</a>
+          </div>
+        </article>
+
+        <article class="selector-card">
+          <div class="selector-head">
+            <h2>Exam Mode</h2>
+          </div>
+          <p class="meta">
+            Run timed tests with HSC ratio targeting (1.8 min/mark, 20% MCQ,
+            80% non-MCQ).
+          </p>
+          <div class="home-actions">
+            <a id="openTestLink" class="mode-link" href="test.html">Open Timed Test</a>
+          </div>
+        </article>
+
+        <article class="selector-card">
+          <div class="selector-head">
+            <h2>Account</h2>
+          </div>
+          <p class="meta">Need to switch user? You can sign up or login again.</p>
+          <div class="home-actions">
+            <a class="mode-link" href="history.html">Question History</a>
+            <a class="mode-link" href="signup.html">Sign Up</a>
+            <a class="mode-link" href="login.html">Login</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="auth.js"></script>
+  </body>
+</html>

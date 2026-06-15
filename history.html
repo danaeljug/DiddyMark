@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>diddymark | History</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="history">
+    <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+    <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+
+    <main class="app">
+      <section class="hero">
+        <nav class="top-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="single.html">Single</a>
+          <a href="test.html">Test</a>
+          <a class="active" href="history.html">History</a>
+        </nav>
+        <p class="eyebrow">diddymark</p>
+        <h1>Question History</h1>
+        <p class="hero-copy">Browse previously generated questions (including past-style prompts) and revisit sample answers.</p>
+        <div class="session-row">
+          <p id="sessionDisplay" class="meta">Not logged in.</p>
+          <button id="logoutBtn" class="ghost" type="button">Log Out</button>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="field-row">
+          <label>
+            Subject
+            <select id="historySubjectFilter">
+              <option value="all">All</option>
+              <option value="physics">Physics</option>
+              <option value="chemistry">Chemistry</option>
+              <option value="biology">Biology</option>
+            </select>
+          </label>
+          <label>
+            Source
+            <select id="historySourceFilter">
+              <option value="all">All</option>
+              <option value="syllabus">Syllabus Bank</option>
+              <option value="past_style">Past HSC/Trial Style</option>
+            </select>
+          </label>
+          <label>
+            Level
+            <select id="historyLevelFilter">
+              <option value="all">All</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard (State Rank)</option>
+            </select>
+          </label>
+          <label>
+            Mode
+            <select id="historyModeFilter">
+              <option value="all">All</option>
+              <option value="single">Single Question</option>
+              <option value="test">Timed Test</option>
+            </select>
+          </label>
+        </div>
+        <div class="actions">
+          <button id="refreshHistoryBtn" class="secondary" type="button">Refresh</button>
+          <button id="clearHistoryBtn" class="ghost" type="button">Clear History</button>
+        </div>
+        <p id="historyMeta" class="meta">Loading history...</p>
+      </section>
+
+      <section class="panel">
+        <div id="historyList" class="history-list"></div>
+      </section>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="history.js"></script>
+  </body>
+</html>
